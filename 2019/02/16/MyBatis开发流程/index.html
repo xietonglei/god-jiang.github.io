@@ -79,20 +79,22 @@
 
 
 
-<meta name="description" content="通过这几天的学习，大概懂得了mybatis的开发流程还有基础的CRUD操作，就想着把它写下来，接下来会写下mybatis框架的开发步骤，举例代码就用insert，其他read、update、delete大致跟insert一样。">
+<meta name="description" content="通过这几天的学习，大概懂得了mybatis的开发流程还有基础的CURD操作，就想着把它写下来，接下来会写下mybatis框架的开发步骤，举例代码就用insert，其他read、update、delete大致跟insert一样。">
 <meta name="keywords" content="学习经历">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MyBatis开发流程">
 <meta property="og:url" content="http://yoursite.com/2019/02/16/MyBatis开发流程/index.html">
 <meta property="og:site_name" content="god_jiang的git个人博客">
-<meta property="og:description" content="通过这几天的学习，大概懂得了mybatis的开发流程还有基础的CRUD操作，就想着把它写下来，接下来会写下mybatis框架的开发步骤，举例代码就用insert，其他read、update、delete大致跟insert一样。">
+<meta property="og:description" content="通过这几天的学习，大概懂得了mybatis的开发流程还有基础的CURD操作，就想着把它写下来，接下来会写下mybatis框架的开发步骤，举例代码就用insert，其他read、update、delete大致跟insert一样。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/02/16/MyBatis开发流程/images/myBatisJar.jpg">
-<meta property="og:updated_time" content="2019-02-16T09:08:27.205Z">
+<meta property="og:image" content="http://yoursite.com/images/myBatisJar.jpg">
+<meta property="og:image" content="http://yoursite.com/images/myBatisMapper.jpg">
+<meta property="og:image" content="http://yoursite.com/images/myBatisSave.jpg">
+<meta property="og:updated_time" content="2019-02-16T09:45:36.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyBatis开发流程">
-<meta name="twitter:description" content="通过这几天的学习，大概懂得了mybatis的开发流程还有基础的CRUD操作，就想着把它写下来，接下来会写下mybatis框架的开发步骤，举例代码就用insert，其他read、update、delete大致跟insert一样。">
-<meta name="twitter:image" content="http://yoursite.com/2019/02/16/MyBatis开发流程/images/myBatisJar.jpg">
+<meta name="twitter:description" content="通过这几天的学习，大概懂得了mybatis的开发流程还有基础的CURD操作，就想着把它写下来，接下来会写下mybatis框架的开发步骤，举例代码就用insert，其他read、update、delete大致跟insert一样。">
+<meta name="twitter:image" content="http://yoursite.com/images/myBatisJar.jpg">
 
 
 
@@ -358,8 +360,28 @@
       
 
       
-        <p>通过这几天的学习，大概懂得了mybatis的开发流程还有基础的CRUD操作，就想着把它写下来，接下来会写下mybatis框架的开发步骤，举例代码就用insert，其他read、<br>update、delete大致跟insert一样。<br><a id="more"></a></p>
-<h2 id="mybatis开发步骤"><a href="#mybatis开发步骤" class="headerlink" title="mybatis开发步骤"></a>mybatis开发步骤</h2><h4 id="一、导入相对应的jar包"><a href="#一、导入相对应的jar包" class="headerlink" title="一、导入相对应的jar包"></a>一、导入相对应的jar包</h4><p><img src="images/myBatisJar.jpg" alt="jar"></p>
+        <p>通过这几天的学习，大概懂得了mybatis的开发流程还有基础的CURD操作，就想着把它写下来，接下来会写下mybatis框架的开发步骤，举例代码就用insert，其他read、update、delete大致跟insert一样。<br><a id="more"></a></p>
+<h2 id="mybatis开发步骤"><a href="#mybatis开发步骤" class="headerlink" title="mybatis开发步骤"></a>mybatis开发步骤</h2><h4 id="一、导入相对应的jar包"><a href="#一、导入相对应的jar包" class="headerlink" title="一、导入相对应的jar包"></a>一、导入相对应的jar包</h4><p>如图所示：<br><img src="/images/myBatisJar.jpg" alt="jar"></p>
+<h4 id="二、写主配置文件myBatis-config-xml"><a href="#二、写主配置文件myBatis-config-xml" class="headerlink" title="二、写主配置文件myBatis-config.xml"></a>二、写主配置文件myBatis-config.xml</h4><p><code>&lt;environments default=&quot;development&quot;&gt;
+        &lt;environment id=&quot;development&quot;&gt;
+            &lt;transactionManager type=&quot;JDBC&quot; /&gt;
+            &lt;dataSource type=&quot;POOLED&quot;&gt;
+                &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot; /&gt;
+                &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;amp;characterEncoding=UTF-8&quot; /&gt;
+                &lt;property name=&quot;username&quot; value=&quot;root&quot; /&gt;
+                &lt;property name=&quot;password&quot; value=&quot;root&quot; /&gt;
+            &lt;/dataSource&gt;
+        &lt;/environment&gt;
+    &lt;/environments&gt;
+    &lt;mappers&gt;
+    &lt;mapper resource=&quot;god/jiang/entity/DeptMapper.xml&quot;/&gt;
+&lt;/mappers&gt;</code></p>
+<h4 id="三、写映射文件"><a href="#三、写映射文件" class="headerlink" title="三、写映射文件"></a>三、写映射文件</h4><p>例如创建一个xxx.java的javebean,同时就要创建一个xxx.Mapper.xml来映射数据库的字段，还有要先写CURD的SQL语句，如图所示：<br><img src="/images/myBatisMapper.jpg" alt="mapper"></p>
+<h4 id="四、写Dao的接口和实现（以insert为例子）"><a href="#四、写Dao的接口和实现（以insert为例子）" class="headerlink" title="四、写Dao的接口和实现（以insert为例子）"></a>四、写Dao的接口和实现（以insert为例子）</h4><p>1.先用Resources.getResourcesAsReader(myBatis-config.xml)读取主配置文件<br>2.构建sessionFactory<br>3.创建session(mybatis默认开启事务)<br>4.业务逻辑（insert为例子）<br>5.提交事务<br>代码如下：<br><img src="/images/myBatisSave.jpg" alt="insert"></p>
+<h4 id="五、test（省略）"><a href="#五、test（省略）" class="headerlink" title="五、test（省略）"></a>五、test（省略）</h4><p>…<br>…<br>…</p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><blockquote>
+<p>MyBatis是一款优秀的持久层框架，它支持定制化SQL、存储过程以及高级映射。MyBatis避免了几乎所有的JDBC代码和手动设置参数以及获取结果集。MyBatis可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Ordinary Java Object,普通的 Java对象)映射成数据库中的记录。<br>以上就是我对MyBatis的开发流程的理解和CURD示例。</p>
+</blockquote>
 
       
     </div>
@@ -551,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis开发步骤"><span class="nav-number">1.</span> <span class="nav-text">mybatis开发步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、导入相对应的jar包"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、导入相对应的jar包</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis开发步骤"><span class="nav-number">1.</span> <span class="nav-text">mybatis开发步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、导入相对应的jar包"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、导入相对应的jar包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、写主配置文件myBatis-config-xml"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、写主配置文件myBatis-config.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、写映射文件"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、写映射文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、写Dao的接口和实现（以insert为例子）"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、写Dao的接口和实现（以insert为例子）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、test（省略）"><span class="nav-number">1.0.5.</span> <span class="nav-text">五、test（省略）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">1.1.</span> <span class="nav-text">结语</span></a></li></ol></div>
             
 
           </div>
