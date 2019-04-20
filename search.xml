@@ -326,7 +326,46 @@
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><blockquote>
 <p>当初大二学习数据结构的时候，有许多数据结构我都学得有点懵，总感觉没有一个系统的概括和总结，导致我的链表学得一般。后来班上有个同学微信跟我说叫我关注”程序员小灰”这个公众号，说他讲得很生动形象，最后关注了一波，看了他里面一道经典的面试题——链表反转。接下来就来讲解链表反转的解法。</p>
 </blockquote>
-<a id="more"></a>]]></content>
+<a id="more"></a>
+<h2 id="链表反转图示"><a href="#链表反转图示" class="headerlink" title="链表反转图示"></a>链表反转图示</h2><p><img src="/images/链表反转解法/1.png" alt=""></p>
+<h2 id="解法说明"><a href="#解法说明" class="headerlink" title="解法说明"></a>解法说明</h2><ol>
+<li><p>链表反转的本质其实就是把每一个节点原本指向下一个节点的next的指针，反转过来指向它的前置节点。</p>
+<p><img src="/images/链表反转解法/2.png" alt=""></p>
+</li>
+<li><p>进行链表反转的时候，需要同时知道三个节点才能进行反转。</p>
+<p><img src="/images/链表反转解法/3.png" alt=""></p>
+</li>
+</ol>
+<h2 id="解法步骤"><a href="#解法步骤" class="headerlink" title="解法步骤"></a>解法步骤</h2><ol>
+<li><p>以p2节点为根，把p2节点原本指向p3的next指针反转，指向p1</p>
+<p><img src="/images/链表反转解法/4.png" alt=""></p>
+</li>
+<li><p>三个临时节点引用p1，p2，p3分别向后移动一位</p>
+<p><img src="/images/链表反转解法/5.png" alt=""></p>
+</li>
+<li><p>重复”1”的工作，以p2节点为根，把p2节点原本指向p3的next指针反转，指向p1</p>
+<p><img src="/images/链表反转解法/6.png" alt=""></p>
+</li>
+<li><p>重复”2”的工作，三个临时节点引用p1，p2，p3分别向后移动一位</p>
+<p><img src="/images/链表反转解法/7.png" alt=""></p>
+</li>
+<li><p>继续重复以上的工作，一直到p2为空为止</p>
+<p><img src="/images/链表反转解法/8.png" alt=""></p>
+</li>
+<li><p>最后，把head节点的next指向空，成为反转链表的尾节点。并把p1赋值给head，让p1所在节点成为反转链表的头节点</p>
+<p><img src="/images/链表反转解法/9.png" alt=""></p>
+</li>
+</ol>
+<p>​    <strong>听完上面的讲解，估计有点懵逼，来看看代码的实现，再结合上面的图示步骤，相信你就会理解链表反转了</strong></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next = <span class="keyword">null</span>;</span><br><span class="line">    </span><br><span class="line">    ListNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">ReverseList</span><span class="params">(ListNode head)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        ListNode p1 = head;</span><br><span class="line">        ListNode p2 = head.next;</span><br><span class="line">        ListNode p3 = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">while</span>(p2 != <span class="keyword">null</span>)&#123;</span><br><span class="line">            p3 = p2.next;</span><br><span class="line">            p2.next = p1;</span><br><span class="line">            p1 = p2;</span><br><span class="line">            p2 = p3;</span><br><span class="line">        &#125;</span><br><span class="line">        head.next = <span class="keyword">null</span>;</span><br><span class="line">        head = p1;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>对于链表的反转就介绍到这里，感谢大家的支持。嘻嘻嘻~~~</p>
+</blockquote>
+<h2 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h2><ul>
+<li>程序员小灰公众号</li>
+<li><a href="https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=13&amp;tqId=11168&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking" target="_blank" rel="noopener">牛客网原题链接</a></li>
+</ul>
+]]></content>
       <categories>
         <category>算法积累ing</category>
       </categories>
