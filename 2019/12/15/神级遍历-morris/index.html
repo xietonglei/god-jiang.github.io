@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法进阶,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="morris遍历介绍morris遍历是二叉树遍历算法的超强进阶算法，跟递归、非递归（栈实现）的空间复杂度，morris遍历可以将非递归遍历中的空间复杂度降为O(1)。从而实现时间复杂度为O(N)，而空间复杂度为O(1)的精妙算法。 morris遍历利用的是树的叶节点左右孩子为空（树的大量空闲指针），实现空间开销的极限缩减。">
+<meta name="keywords" content="算法进阶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="神级遍历-morris">
+<meta property="og:url" content="http://yoursite.com/2019/12/15/神级遍历-morris/index.html">
+<meta property="og:site_name" content="god_jiang的git个人博客">
+<meta property="og:description" content="morris遍历介绍morris遍历是二叉树遍历算法的超强进阶算法，跟递归、非递归（栈实现）的空间复杂度，morris遍历可以将非递归遍历中的空间复杂度降为O(1)。从而实现时间复杂度为O(N)，而空间复杂度为O(1)的精妙算法。 morris遍历利用的是树的叶节点左右孩子为空（树的大量空闲指针），实现空间开销的极限缩减。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-15T06:44:04.422Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="神级遍历-morris">
+<meta name="twitter:description" content="morris遍历介绍morris遍历是二叉树遍历算法的超强进阶算法，跟递归、非递归（栈实现）的空间复杂度，morris遍历可以将非递归遍历中的空间复杂度降为O(1)。从而实现时间复杂度为O(N)，而空间复杂度为O(1)的精妙算法。 morris遍历利用的是树的叶节点左右孩子为空（树的大量空闲指针），实现空间开销的极限缩减。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/15/神级遍历-morris/">
+
+
+
+
+
+  <title>神级遍历-morris | god_jiang的git个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">god_jiang的git个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录编程路上的点点滴滴</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/15/神级遍历-morris/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="god_jiang的git个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">神级遍历-morris</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-15T14:10:49+08:00">
+                2019-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法积累ing/" itemprop="url" rel="index">
+                    <span itemprop="name">算法积累ing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="morris遍历介绍"><a href="#morris遍历介绍" class="headerlink" title="morris遍历介绍"></a>morris遍历介绍</h2><p>morris遍历是二叉树遍历算法的超强进阶算法，跟递归、非递归（栈实现）的空间复杂度，morris遍历可以将非递归遍历中的空间复杂度降为O(1)。从而实现时间复杂度为O(N)，而空间复杂度为O(1)的精妙算法。</p>
+<p>morris遍历利用的是树的叶节点左右孩子为空（树的大量空闲指针），实现空间开销的极限缩减。</p>
+<a id="more"></a>
+<h2 id="morris遍历的实现原则"><a href="#morris遍历的实现原则" class="headerlink" title="morris遍历的实现原则"></a>morris遍历的实现原则</h2><p><strong>记作当前节点为cur。</strong></p>
+<ol>
+<li>如果cur无左孩子，cur向右移动（cur=cur.right）</li>
+<li>如果cur有左孩子，找到cur左子树上最右的节点，记为mostright<ol>
+<li>如果mostright的right指针指向空，让其指向cur，cur向左移动（cur=cur.left）</li>
+<li>如果mostright的right指针指向cur，让其指向空，cur向右移动（cur=cur.right）</li>
+</ol>
+</li>
+</ol>
+<p>实现以上的原则，即实现了morris遍历。</p>
+<h2 id="morris遍历的实质"><a href="#morris遍历的实质" class="headerlink" title="morris遍历的实质"></a>morris遍历的实质</h2><p>建立一种机制，对<strong>于没有左子树的节点只到达一次，对于有左子树的节点会到达两次</strong></p>
+<h2 id="morris遍历的实例"><a href="#morris遍历的实例" class="headerlink" title="morris遍历的实例"></a>morris遍历的实例</h2><p>一个树若按层遍历的结构为{1,2,3,4,5,6,7}，即该树为满二叉树，头结点值为1，左右孩子为2,3，叶节点为4,5,6,7</p>
+<p>我们按照morris遍历来遍历该树。</p>
+<p>1）首先cur来到头结点1，按照morris原则的第二条第一点，它存在左孩子，cur左子树上最右的节点为5，它的right指针指向空，所以让其指向1，cur向左移动到2。</p>
+<p>2）2有左孩子，且它左子树最右的节点4指向空，按照morris原则的第二条第一点,让4的right指针指向2，cur向左移动到4</p>
+<p>3）4不存在左孩子，按照morris原则的第一条，cur向右移动，在第二步中，4的right指针已经指向了2，所以cur会回到2</p>
+<p>4）重新回到2，有左孩子，它左子树最右的节点为4，但是在第二步中，4的right指针已经指向了2，不为空。所以按照morris原则的第二条第二点，2向右移动到5，同时4的right指针重新指向空</p>
+<p>5）5不存在左孩子，按照morris原则的第一条，cur向右移动，在第一步中，5的right指针已经指向了1，所以cur会回到1</p>
+<p>6）cur回到1，回到头结点，左子树遍历完成，1有左孩子，左子树上最右的节点为5，它的right指针指向1，按照morris原则的第二条第二点，1向右移动到3，同时5的right指针重新指回空</p>
+<p>……</p>
+<p>当到达最后一个节点7时，按照流程下来，此时7无左右孩子，遍历结束。</p>
+<h2 id="morris代码实现（前序、中序、后序遍历）"><a href="#morris代码实现（前序、中序、后序遍历）" class="headerlink" title="morris代码实现（前序、中序、后序遍历）"></a>morris代码实现（前序、中序、后序遍历）</h2><p>前序遍历：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">morrisPre</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Node cur = head;</span><br><span class="line">    Node mostRight = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">while</span> (cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">        mostRight = cur.left;</span><br><span class="line">        <span class="keyword">if</span>(mostRight != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span> (mostRight.right !=<span class="keyword">null</span> &amp;&amp; mostRight.right != cur)&#123;</span><br><span class="line">                mostRight = mostRight.right;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(mostRight.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">                mostRight.right = cur;</span><br><span class="line">                System.out.print(cur.value+<span class="string">" "</span>);</span><br><span class="line">                cur = cur.left;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                mostRight.right = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.print(cur.value + <span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        cur = cur.right;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>中序遍历：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">morrisIn</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Node cur = head;</span><br><span class="line">    Node mostRight = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">while</span> (cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">        mostRight = cur.left;</span><br><span class="line">        <span class="keyword">if</span>(mostRight != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span> (mostRight.right !=<span class="keyword">null</span> &amp;&amp; mostRight.right != cur)&#123;</span><br><span class="line">                mostRight = mostRight.right;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(mostRight.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">                mostRight.right = cur;</span><br><span class="line">                cur = cur.left;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                mostRight.right = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(cur.value+<span class="string">" "</span>);</span><br><span class="line">        cur = cur.right;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后续遍历（复杂一点）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">morrisPos</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(head == <span class="keyword">null</span>)&#123;</span><br><span class="line">           <span class="keyword">return</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       Node cur = head;</span><br><span class="line">       Node mostRight = <span class="keyword">null</span>;</span><br><span class="line">       <span class="keyword">while</span> (cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">           mostRight = cur.left;</span><br><span class="line">           <span class="keyword">if</span>(mostRight != <span class="keyword">null</span>)&#123;</span><br><span class="line">               <span class="keyword">while</span> (mostRight.right !=<span class="keyword">null</span> &amp;&amp; mostRight.right != cur)&#123;</span><br><span class="line">                   mostRight = mostRight.right;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span>(mostRight.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">                   mostRight.right = cur;</span><br><span class="line">                   cur = cur.left;</span><br><span class="line">                   <span class="keyword">continue</span>;</span><br><span class="line">               &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                   mostRight.right = <span class="keyword">null</span>;</span><br><span class="line">                   printEdge(cur.left);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           cur = cur.right;</span><br><span class="line">       &#125;</span><br><span class="line">       printEdge(head);</span><br><span class="line">       System.out.println();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printEdge</span><span class="params">(Node node)</span></span>&#123;</span><br><span class="line">       Node tail =reverseEdge(node);</span><br><span class="line">       Node cur = tail;</span><br><span class="line">       <span class="keyword">while</span> (cur != <span class="keyword">null</span> )&#123;</span><br><span class="line">           System.out.print(cur.value+<span class="string">" "</span>);</span><br><span class="line">           cur =cur.right;</span><br><span class="line">       &#125;</span><br><span class="line">       reverseEdge(tail);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Node <span class="title">reverseEdge</span><span class="params">(Node node)</span></span>&#123;</span><br><span class="line">       Node pre = <span class="keyword">null</span>;</span><br><span class="line">       Node next = <span class="keyword">null</span>;</span><br><span class="line">       <span class="keyword">while</span> (node != <span class="keyword">null</span>)&#123;</span><br><span class="line">           next = node.right;</span><br><span class="line">           node.right = pre;</span><br><span class="line">           pre = node;</span><br><span class="line">           node = next;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> pre;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>以上就是我今天所要分享的morris遍历，神级算法，时间复杂度为O(N)，空间复杂度为O(1)。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法进阶/" <i="" class="fa fa-tag"> 算法进阶</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/02/全排列算法/" rel="next" title="全排列算法">
+                <i class="fa fa-chevron-left"></i> 全排列算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="江神">
+            
+              <p class="site-author-name" itemprop="name">江神</p>
+              <p class="site-description motion-element" itemprop="description">一名热爱编程的在校大学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/god-jiang/god-jiang.github.io" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#morris遍历介绍"><span class="nav-number">1.</span> <span class="nav-text">morris遍历介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#morris遍历的实现原则"><span class="nav-number">2.</span> <span class="nav-text">morris遍历的实现原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#morris遍历的实质"><span class="nav-number">3.</span> <span class="nav-text">morris遍历的实质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#morris遍历的实例"><span class="nav-number">4.</span> <span class="nav-text">morris遍历的实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#morris代码实现（前序、中序、后序遍历）"><span class="nav-number">5.</span> <span class="nav-text">morris代码实现（前序、中序、后序遍历）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江神</span>
+
+  
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+-->
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+    <!-- 页面点击小红心 -->
+    <script type="text/javascript" src="/js/src/clicklove.js"></script>
