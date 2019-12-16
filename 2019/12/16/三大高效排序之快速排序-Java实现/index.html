@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="学习经历,">
+  <meta name="keywords" content="算法进阶,">
 
 
 
@@ -79,22 +79,20 @@
 
 
 
-<meta name="description" content="通过这几天的学习，大概懂得了mybatis的开发流程还有基础的CURD操作，就想着把它写下来，接下来会写下mybatis框架的开发步骤，举例代码就用insert，其他read、update、delete大致跟insert一样。">
-<meta name="keywords" content="学习经历">
+<meta name="description" content="概念快速排序是一种原地排序，只需要一个很小的栈作为辅助空间，空间复杂度为O(logN)，所以适合在数据集比较大且无序的时候使用。 时间复杂度 时间复杂度比较复杂，最好的情况是O(N)，最差的时候是O(N^2)，所以平时说的O(N*logN)为其平均时间复杂度。">
+<meta name="keywords" content="算法进阶">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis开发流程">
-<meta property="og:url" content="http://yoursite.com/2019/02/16/MyBatis开发流程/index.html">
+<meta property="og:title" content="三大高效排序之快速排序(Java实现)">
+<meta property="og:url" content="http://yoursite.com/2019/12/16/三大高效排序之快速排序-Java实现/index.html">
 <meta property="og:site_name" content="god_jiang的git个人博客">
-<meta property="og:description" content="通过这几天的学习，大概懂得了mybatis的开发流程还有基础的CURD操作，就想着把它写下来，接下来会写下mybatis框架的开发步骤，举例代码就用insert，其他read、update、delete大致跟insert一样。">
+<meta property="og:description" content="概念快速排序是一种原地排序，只需要一个很小的栈作为辅助空间，空间复杂度为O(logN)，所以适合在数据集比较大且无序的时候使用。 时间复杂度 时间复杂度比较复杂，最好的情况是O(N)，最差的时候是O(N^2)，所以平时说的O(N*logN)为其平均时间复杂度。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/myBatisJar.jpg">
-<meta property="og:image" content="http://yoursite.com/images/myBatisMapper.jpg">
-<meta property="og:image" content="http://yoursite.com/images/myBatisSave.jpg">
-<meta property="og:updated_time" content="2019-02-16T09:45:36.883Z">
+<meta property="og:image" content="e:/github/img/快排运行截图.png">
+<meta property="og:updated_time" content="2019-12-16T04:49:39.525Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBatis开发流程">
-<meta name="twitter:description" content="通过这几天的学习，大概懂得了mybatis的开发流程还有基础的CURD操作，就想着把它写下来，接下来会写下mybatis框架的开发步骤，举例代码就用insert，其他read、update、delete大致跟insert一样。">
-<meta name="twitter:image" content="http://yoursite.com/images/myBatisJar.jpg">
+<meta name="twitter:title" content="三大高效排序之快速排序(Java实现)">
+<meta name="twitter:description" content="概念快速排序是一种原地排序，只需要一个很小的栈作为辅助空间，空间复杂度为O(logN)，所以适合在数据集比较大且无序的时候使用。 时间复杂度 时间复杂度比较复杂，最好的情况是O(N)，最差的时候是O(N^2)，所以平时说的O(N*logN)为其平均时间复杂度。">
+<meta name="twitter:image" content="e:/github/img/快排运行截图.png">
 
 
 
@@ -124,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/16/MyBatis开发流程/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/16/三大高效排序之快速排序-Java实现/">
 
 
 
 
 
-  <title>MyBatis开发流程 | god_jiang的git个人博客</title>
+  <title>三大高效排序之快速排序(Java实现) | god_jiang的git个人博客</title>
   
 
 
@@ -267,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/MyBatis开发流程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/三大高效排序之快速排序-Java实现/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江神">
@@ -284,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MyBatis开发流程</h1>
+          <h1 class="post-title" itemprop="name headline">三大高效排序之快速排序(Java实现)</h1>
         
 
         <div class="post-meta">
@@ -296,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-16T16:47:12+08:00">
-                2019-02-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-16T12:33:10+08:00">
+                2019-12-16
               </time>
             
 
@@ -319,8 +317,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/SSM学习ing/" itemprop="url" rel="index">
-                    <span itemprop="name">SSM学习ing</span>
+                  <a href="/categories/算法积累ing/" itemprop="url" rel="index">
+                    <span itemprop="name">算法积累ing</span>
                   </a>
                 </span>
 
@@ -356,28 +354,21 @@
       
 
       
-        <p>通过这几天的学习，大概懂得了mybatis的开发流程还有基础的CURD操作，就想着把它写下来，接下来会写下mybatis框架的开发步骤，举例代码就用insert，其他read、update、delete大致跟insert一样。<br><a id="more"></a></p>
-<h2 id="mybatis开发步骤"><a href="#mybatis开发步骤" class="headerlink" title="mybatis开发步骤"></a>mybatis开发步骤</h2><h4 id="一、导入相对应的jar包"><a href="#一、导入相对应的jar包" class="headerlink" title="一、导入相对应的jar包"></a>一、导入相对应的jar包</h4><p>如图所示：<br><img src="/images/myBatisJar.jpg" alt="jar"></p>
-<h4 id="二、写主配置文件myBatis-config-xml"><a href="#二、写主配置文件myBatis-config-xml" class="headerlink" title="二、写主配置文件myBatis-config.xml"></a>二、写主配置文件myBatis-config.xml</h4><p><code>&lt;environments default=&quot;development&quot;&gt;
-        &lt;environment id=&quot;development&quot;&gt;
-            &lt;transactionManager type=&quot;JDBC&quot; /&gt;
-            &lt;dataSource type=&quot;POOLED&quot;&gt;
-                &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot; /&gt;
-                &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;amp;characterEncoding=UTF-8&quot; /&gt;
-                &lt;property name=&quot;username&quot; value=&quot;root&quot; /&gt;
-                &lt;property name=&quot;password&quot; value=&quot;root&quot; /&gt;
-            &lt;/dataSource&gt;
-        &lt;/environment&gt;
-    &lt;/environments&gt;
-    &lt;mappers&gt;
-    &lt;mapper resource=&quot;god/jiang/entity/DeptMapper.xml&quot;/&gt;
-&lt;/mappers&gt;</code></p>
-<h4 id="三、写映射文件"><a href="#三、写映射文件" class="headerlink" title="三、写映射文件"></a>三、写映射文件</h4><p>例如创建一个xxx.java的javebean,同时就要创建一个xxx.Mapper.xml来映射数据库的字段，还有要先写CURD的SQL语句，如图所示：<br><img src="/images/myBatisMapper.jpg" alt="mapper"></p>
-<h4 id="四、写Dao的接口和实现（以insert为例子）"><a href="#四、写Dao的接口和实现（以insert为例子）" class="headerlink" title="四、写Dao的接口和实现（以insert为例子）"></a>四、写Dao的接口和实现（以insert为例子）</h4><p>1.先用Resources.getResourcesAsReader(myBatis-config.xml)读取主配置文件<br>2.构建sessionFactory<br>3.创建session(mybatis默认开启事务)<br>4.业务逻辑（insert为例子）<br>5.提交事务<br>代码如下：<br><img src="/images/myBatisSave.jpg" alt="insert"></p>
-<h4 id="五、test（省略）"><a href="#五、test（省略）" class="headerlink" title="五、test（省略）"></a>五、test（省略）</h4><p>…<br>…<br>…</p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><blockquote>
-<p>MyBatis是一款优秀的持久层框架，它支持定制化SQL、存储过程以及高级映射。MyBatis避免了几乎所有的JDBC代码和手动设置参数以及获取结果集。MyBatis可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Ordinary Java Object,普通的 Java对象)映射成数据库中的记录。<br>以上就是我对MyBatis的开发流程的理解和CURD示例。</p>
-</blockquote>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>快速排序是一种原地排序，只需要一个很小的栈作为辅助空间，空间复杂度为O(logN)，所以适合在数据集比较大且无序的时候使用。</p>
+<p><strong>时间复杂度</strong></p>
+<p>时间复杂度比较复杂，最好的情况是O(N)，最差的时候是O(N^2)，所以平时说的O(N*logN)为其平均时间复杂度。</p>
+<a id="more"></a>
+<h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>随机找出一个数，可以随机取，也可以取固定位置，一般是取第一个或最后一个称为基准，然后就是比基准小的在左边，比基准大的放到右边，如何放做，就是和基准进行交换，这样交换完左边都是比基准小的，右边都是比较基准大的，这样就将一个数组分成了两个子数组，然后再按照同样的方法把子数组再分成更小的子数组，直到不能分解为止。</p>
+<h2 id="操作实现"><a href="#操作实现" class="headerlink" title="操作实现"></a>操作实现</h2><p>partition方法中</p>
+<p>1.选择数组中的第一个元素arr[startIndex]作为轴（pivot）</p>
+<p>2.左指针为left，从最左边开始寻找第一个比pivot大的数</p>
+<p>3.右指针为right，从最右面的一个元素开始向左寻找第一个小于等于pivot的数值</p>
+<p>4.经过2，3两个步骤后，将会出现以下两种情况</p>
+<p>​           （1）：left和right没有相遇，此时进行交换，swap（arr,left,right）;</p>
+<p>​           （2）：left和right相遇，做swap（arr,startIndex,left），然后返回left</p>
+<p>5.partition中返回pivot用于分割数组，下一次用于排序的数组被分割为(startIndex,pivot-1),(pivot+1,endIndex)两段，进行递归操作</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] a = &#123;<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">5</span>&#125;;</span><br><span class="line">        quickSort(a, <span class="number">0</span>, a.length - <span class="number">1</span>);</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//时间复杂度O(n*logn)，空间复杂度O(n*logn)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> startIndex, <span class="keyword">int</span> endIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (startIndex &lt; endIndex) &#123;</span><br><span class="line">            <span class="comment">//找出基准</span></span><br><span class="line">            <span class="keyword">int</span> partition = partition(arr, startIndex, endIndex);</span><br><span class="line">            <span class="comment">//分成两边递归进行</span></span><br><span class="line">            quickSort(arr, startIndex, partition - <span class="number">1</span>);</span><br><span class="line">            quickSort(arr, partition + <span class="number">1</span>, endIndex);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//找基准</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> startIndex, <span class="keyword">int</span> endIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> pivot = arr[startIndex];</span><br><span class="line">        <span class="keyword">int</span> left = startIndex;</span><br><span class="line">        <span class="keyword">int</span> right = endIndex;</span><br><span class="line">        <span class="keyword">while</span> (left != right) &#123;</span><br><span class="line">            <span class="keyword">while</span> (left &lt; right &amp;&amp; arr[right] &gt; pivot) &#123;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (left &lt; right &amp;&amp; arr[left] &lt;= pivot) &#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//找到left比基准大，right比基准小，进行交换</span></span><br><span class="line">            <span class="keyword">if</span> (left &lt; right) &#123;</span><br><span class="line">                swap(arr, left, right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//第一轮完成，让left和right重合的位置和基准交换，返回基准的位置</span></span><br><span class="line">        swap(arr, startIndex, left);</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//两数交换</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">        arr[i] = arr[j];</span><br><span class="line">        arr[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="运行截图"><a href="#运行截图" class="headerlink" title="运行截图"></a>运行截图</h2><p><img src="E:\github\img\快排运行截图.png" alt=""></p>
 
       
     </div>
@@ -404,7 +395,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/学习经历/" <i="" class="fa fa-tag"> 学习经历</a>
+            <a href="/tags/算法进阶/" <i="" class="fa fa-tag"> 算法进阶</a>
           
         </div>
       
@@ -417,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/22/学习mybatis的记录01/" rel="next" title="学习mybatis的记录初体验">
-                <i class="fa fa-chevron-left"></i> 学习mybatis的记录初体验
+              <a href="/2019/12/15/神级遍历-morris/" rel="next" title="神级遍历-morris">
+                <i class="fa fa-chevron-left"></i> 神级遍历-morris
               </a>
             
           </div>
@@ -426,10 +417,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/02/全排列算法/" rel="prev" title="全排列算法">
-                全排列算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -573,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis开发步骤"><span class="nav-number">1.</span> <span class="nav-text">mybatis开发步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、导入相对应的jar包"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、导入相对应的jar包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、写主配置文件myBatis-config-xml"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、写主配置文件myBatis-config.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、写映射文件"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、写映射文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、写Dao的接口和实现（以insert为例子）"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、写Dao的接口和实现（以insert为例子）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、test（省略）"><span class="nav-number">1.0.5.</span> <span class="nav-text">五、test（省略）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">1.1.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">2.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作实现"><span class="nav-number">3.</span> <span class="nav-text">操作实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">4.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行截图"><span class="nav-number">5.</span> <span class="nav-text">运行截图</span></a></li></ol></div>
             
 
           </div>
