@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="学习经历,">
+  <meta name="keywords" content="高效排序,">
 
 
 
@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="今天刚开始学习mybatis，听了mybatis和hibernate之间的比较，大致是这样的：一、灵活性：mybatis可以直接使用SQL语句，灵活性较高二、效率性：mybatis直接用SQL，效率高（hibernate使用hql语句，底层需要转换成SQL来操作数据库，时间上有消耗）三、移植性：hibernate更好，因为hibernate用配置文件关联数据库，用hql语句与数据库无直接关系">
-<meta name="keywords" content="学习经历">
+<meta name="description" content="归并排序的介绍归并排序(英语：Merge sort，或Mergesort)，是创建在归并操作上的一种有效的排序算法，效率为O(n log n)。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。">
+<meta name="keywords" content="高效排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习mybatis的记录初体验">
-<meta property="og:url" content="http://yoursite.com/2019/01/22/学习mybatis的记录01/index.html">
+<meta property="og:title" content="三大高效排序之归并排序(Java实现)">
+<meta property="og:url" content="http://yoursite.com/2019/12/16/三大高效排序之归并排序-Java实现/index.html">
 <meta property="og:site_name" content="god_jiang的git个人博客">
-<meta property="og:description" content="今天刚开始学习mybatis，听了mybatis和hibernate之间的比较，大致是这样的：一、灵活性：mybatis可以直接使用SQL语句，灵活性较高二、效率性：mybatis直接用SQL，效率高（hibernate使用hql语句，底层需要转换成SQL来操作数据库，时间上有消耗）三、移植性：hibernate更好，因为hibernate用配置文件关联数据库，用hql语句与数据库无直接关系">
+<meta property="og:description" content="归并排序的介绍归并排序(英语：Merge sort，或Mergesort)，是创建在归并操作上的一种有效的排序算法，效率为O(n log n)。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-14T09:10:42.011Z">
+<meta property="og:image" content="http://yoursite.com/images/归并排序图示.png">
+<meta property="og:image" content="http://yoursite.com/imags/归并运行截图.png">
+<meta property="og:updated_time" content="2019-12-16T12:59:56.941Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习mybatis的记录初体验">
-<meta name="twitter:description" content="今天刚开始学习mybatis，听了mybatis和hibernate之间的比较，大致是这样的：一、灵活性：mybatis可以直接使用SQL语句，灵活性较高二、效率性：mybatis直接用SQL，效率高（hibernate使用hql语句，底层需要转换成SQL来操作数据库，时间上有消耗）三、移植性：hibernate更好，因为hibernate用配置文件关联数据库，用hql语句与数据库无直接关系">
+<meta name="twitter:title" content="三大高效排序之归并排序(Java实现)">
+<meta name="twitter:description" content="归并排序的介绍归并排序(英语：Merge sort，或Mergesort)，是创建在归并操作上的一种有效的排序算法，效率为O(n log n)。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。">
+<meta name="twitter:image" content="http://yoursite.com/images/归并排序图示.png">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/22/学习mybatis的记录01/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/16/三大高效排序之归并排序-Java实现/">
 
 
 
 
 
-  <title>学习mybatis的记录初体验 | god_jiang的git个人博客</title>
+  <title>三大高效排序之归并排序(Java实现) | god_jiang的git个人博客</title>
   
 
 
@@ -263,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/22/学习mybatis的记录01/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/三大高效排序之归并排序-Java实现/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江神">
@@ -280,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">学习mybatis的记录初体验</h1>
+          <h1 class="post-title" itemprop="name headline">三大高效排序之归并排序(Java实现)</h1>
         
 
         <div class="post-meta">
@@ -292,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-22T17:39:26+08:00">
-                2019-01-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-16T20:38:21+08:00">
+                2019-12-16
               </time>
             
 
@@ -315,8 +318,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/SSM学习ing/" itemprop="url" rel="index">
-                    <span itemprop="name">SSM学习ing</span>
+                  <a href="/categories/算法积累ing/" itemprop="url" rel="index">
+                    <span itemprop="name">算法积累ing</span>
                   </a>
                 </span>
 
@@ -352,8 +355,16 @@
       
 
       
-        <p>今天刚开始学习mybatis，听了mybatis和hibernate之间的比较，大致是这样的：<br>一、灵活性：mybatis可以直接使用SQL语句，灵活性较高<br>二、效率性：mybatis直接用SQL，效率高（hibernate使用hql语句，底层需要转换成<br>SQL来操作数据库，时间上有消耗）<br>三、移植性：hibernate更好，因为hibernate用配置文件关联数据库，用hql语句与<br>数据库无直接关系<br><a id="more"></a><br>听完课学了大概一个小时，弄懂了mybatis开发的大致流程，但是轮到我自己动手操<br>作的时候，一直保空指针异常，初学者总是遇到这个问题，弄了我将近2个多小时，<br>最后才知道原来要使用SQL语句的时候，SqlSession.insert(1,2)传的参数弄错了，<br>第一个参数要传的是mapper.xml的命名空间加定义的id来定位，第二个参数就是你<br>要传的值。</p>
-<p>总的来说，我还是觉得学习编程，理论固然重要，但是动手能力也很重要，编码能力<br>也很重要，这就是我学习mybatis的初次体验。</p>
+        <h2 id="归并排序的介绍"><a href="#归并排序的介绍" class="headerlink" title="归并排序的介绍"></a>归并排序的介绍</h2><p>归并排序(英语：Merge sort，或Mergesort)，是创建在归并操作上的一种有效的排序算法，效率为O(n log n)。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。</p>
+<a id="more"></a>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>是利用递归与分治的技术将数据序列划分为越来越小的半子表，再对半子表排序，最后再用递归方法将排好序的半子表合并成越来越大的有序序列。</p>
+<h2 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h2><p><strong>将两个有序的数列合并成一个大的有序的序列。通过递归，层层合并，即为归并。</strong></p>
+<p><img src="/images/归并排序图示.png" alt=""></p>
+<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">//归并排序，时间复杂度为O(N*logN)，空间复杂度为O(N)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSort</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">MergeSort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//分治的结束条件</span></span><br><span class="line">        <span class="keyword">if</span> (start &gt;= end) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//保证不溢出取start和end的中位数</span></span><br><span class="line">        <span class="keyword">int</span> mid = start + ((end - start) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">        <span class="comment">//递归排序并且合并</span></span><br><span class="line">        MergeSort(arr, start, mid);</span><br><span class="line">        MergeSort(arr, mid + <span class="number">1</span>, end);</span><br><span class="line">        Merge(arr, start, mid, end);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//合并</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> start, <span class="keyword">int</span> mid, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[end - start + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> p1 = start;</span><br><span class="line">        <span class="keyword">int</span> p2 = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (p1 &lt;= mid &amp;&amp; p2 &lt;= end) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[p1] &gt; arr[p2]) &#123;</span><br><span class="line">                temp[p++] = arr[p2++];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                temp[p++] = arr[p1++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (p1 &lt;= mid) &#123;</span><br><span class="line">            temp[p++] = arr[p1++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (p2 &lt;= end) &#123;</span><br><span class="line">            temp[p++] = arr[p2++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; temp.length; i++) &#123;</span><br><span class="line">            arr[i + start] = temp[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] a = &#123;<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">5</span>&#125;;</span><br><span class="line">        MergeSort(a, <span class="number">0</span>, a.length - <span class="number">1</span>);</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="运行截图"><a href="#运行截图" class="headerlink" title="运行截图"></a>运行截图</h2><p><img src="/imags/归并运行截图.png" alt=""></p>
+<blockquote>
+<p>以上就是今天分享的归并排序，时间复杂度为O(N*logN)，空间复杂度为O(N)</p>
+</blockquote>
 
       
     </div>
@@ -380,7 +391,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/学习经历/" <i="" class="fa fa-tag"> 学习经历</a>
+            <a href="/tags/高效排序/" <i="" class="fa fa-tag"> 高效排序</a>
           
         </div>
       
@@ -393,8 +404,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/17/god-jiang-title/" rel="next" title="god_jiang的第一篇博客">
-                <i class="fa fa-chevron-left"></i> god_jiang的第一篇博客
+              <a href="/2019/12/16/三大高效排序之快速排序-Java实现/" rel="next" title="三大高效排序之快速排序(Java实现)">
+                <i class="fa fa-chevron-left"></i> 三大高效排序之快速排序(Java实现)
               </a>
             
           </div>
@@ -402,10 +413,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/16/MyBatis开发流程/" rel="prev" title="MyBatis开发流程">
-                MyBatis开发流程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -457,8 +464,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -530,6 +546,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#归并排序的介绍"><span class="nav-number">1.</span> <span class="nav-text">归并排序的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心思想"><span class="nav-number">3.</span> <span class="nav-text">核心思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现代码"><span class="nav-number">4.</span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行截图"><span class="nav-number">5.</span> <span class="nav-text">运行截图</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
