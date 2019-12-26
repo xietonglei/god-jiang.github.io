@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="god_jiang的git个人博客">
 <meta property="og:description" content="荷兰国旗问题 给定一个数组arr和一个数num，请把小于num的数放在数组的左边，等于num的数放在数组的中间，大于num的数放在数组的右边。要求额外空间复杂度为O(1)，时间复杂度为O(N)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-26T08:45:52.753Z">
+<meta property="og:image" content="http://yoursite.com/images/荷兰国旗.png">
+<meta property="og:updated_time" content="2019-12-26T08:54:33.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="荷兰国旗问题&amp;快排&amp;BFPRT算法">
 <meta name="twitter:description" content="荷兰国旗问题 给定一个数组arr和一个数num，请把小于num的数放在数组的左边，等于num的数放在数组的中间，大于num的数放在数组的右边。要求额外空间复杂度为O(1)，时间复杂度为O(N)">
+<meta name="twitter:image" content="http://yoursite.com/images/荷兰国旗.png">
 
 
 
@@ -383,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  207 字
+                  350 字
                 </span>
               
 
@@ -431,7 +433,11 @@
 <li>如果当前位置上的数等于num，less和more均不变，cur++</li>
 <li>当cur==more时，停止比较，返回</li>
 </ul>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NetherLandsFlag</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">7</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">6</span>,<span class="number">6</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] res = partition(arr,<span class="number">0</span>,arr.length-<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line">        System.out.println(Arrays.toString(res));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NetherLandsFlag</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] partition(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> num) &#123;</span><br><span class="line">        <span class="keyword">int</span> less = L - <span class="number">1</span>;<span class="comment">//小于区域的边界</span></span><br><span class="line">        <span class="keyword">int</span> more = R + <span class="number">1</span>;<span class="comment">//大于区域的边界</span></span><br><span class="line">        <span class="keyword">int</span> cur = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (cur &lt; more) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[cur] &lt; num) &#123;</span><br><span class="line">                swap(arr, ++less, cur++);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[cur] &gt; num) &#123;</span><br><span class="line">                swap(arr, --more, cur);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">        arr[i] = arr[j];</span><br><span class="line">        arr[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">7</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] res = partition(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>, <span class="number">5</span>);</span><br><span class="line">        System.out.println(Arrays.toString(res));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="运行截图"><a href="#运行截图" class="headerlink" title="运行截图"></a>运行截图</h2><p><img src="/images/荷兰国旗.png" alt=""></p>
+<blockquote>
+<p>以上讲的是荷兰国旗的解法，可以运用于经典快排算法的partition操作，也可以用于BFPRT算法求解（TOP-K问题）</p>
+</blockquote>
 
       
     </div>
@@ -623,7 +629,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#荷兰国旗问题"><span class="nav-number">1.</span> <span class="nav-text">荷兰国旗问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决思路"><span class="nav-number">2.</span> <span class="nav-text">解决思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#荷兰国旗问题"><span class="nav-number">1.</span> <span class="nav-text">荷兰国旗问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决思路"><span class="nav-number">2.</span> <span class="nav-text">解决思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行截图"><span class="nav-number">4.</span> <span class="nav-text">运行截图</span></a></li></ol></div>
             
 
           </div>
