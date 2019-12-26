@@ -3,8 +3,7 @@
   <entry>
     <title>荷兰国旗问题&amp;快排&amp;BFPRT算法</title>
     <url>/2019/12/26/%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98-%E5%BF%AB%E6%8E%92-BFPRT%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<p>[TOC]</p>
-<h2 id="荷兰国旗问题"><a href="#荷兰国旗问题" class="headerlink" title="荷兰国旗问题"></a>荷兰国旗问题</h2><blockquote>
+    <content><![CDATA[<h2 id="荷兰国旗问题"><a href="#荷兰国旗问题" class="headerlink" title="荷兰国旗问题"></a>荷兰国旗问题</h2><blockquote>
 <p>给定一个数组arr和一个数num，请把小于num的数放在数组的左边，等于num的数放在数组的中间，大于num的数放在数组的右边。要求额外空间复杂度为O(1)，时间复杂度为O(N)</p>
 </blockquote>
 <a id="more"></a>
@@ -17,9 +16,34 @@
 </ul>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NetherLandsFlag</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] partition(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> num) &#123;</span><br><span class="line">        <span class="keyword">int</span> less = L - <span class="number">1</span>;<span class="comment">//小于区域的边界</span></span><br><span class="line">        <span class="keyword">int</span> more = R + <span class="number">1</span>;<span class="comment">//大于区域的边界</span></span><br><span class="line">        <span class="keyword">int</span> cur = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (cur &lt; more) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[cur] &lt; num) &#123;</span><br><span class="line">                swap(arr, ++less, cur++);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[cur] &gt; num) &#123;</span><br><span class="line">                swap(arr, --more, cur);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">        arr[i] = arr[j];</span><br><span class="line">        arr[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">7</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] res = partition(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>, <span class="number">5</span>);</span><br><span class="line">        System.out.println(Arrays.toString(res));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="运行截图"><a href="#运行截图" class="headerlink" title="运行截图"></a>运行截图</h3><p><img src="/images/荷兰国旗.png" alt=""></p>
+<hr>
 <h2 id="稳定算法的定义"><a href="#稳定算法的定义" class="headerlink" title="稳定算法的定义"></a>稳定算法的定义</h2><blockquote>
 <p>假定在待排序的记录序列中，存在多个具有相同的关键字的记录，若经过排序，这些记录的相对次序保持不变，即在原序列中，r[i]=r[j]，且r[i]在r[j]之前，而在排序后的序列中，r[i]仍在r[j]之前，则称这个排序算法是稳定的；否则称为不稳定的。</p>
 </blockquote>
+<hr>
+<h2 id="BFPRT算法"><a href="#BFPRT算法" class="headerlink" title="BFPRT算法"></a>BFPRT算法</h2><h3 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h3><blockquote>
+<p>在一大堆数中求其前k大或前k小的问题，简称TOP-K问题。目前解决TOP-K问题最有效的算法是BFPRT算法，又称为中位数的中位数算法，该算法由Blum、Floyd、Pratt、Rivest、Tarjan提出，最坏时间复杂度为O(N)</p>
+</blockquote>
+<p>一般第一反应解决TOP-K问题就是对所有数据进行一次排序，然后取其前k即可，但是有两个问题：</p>
+<ol>
+<li>排序的平均复杂度为O(n*logn)，最坏时间复杂度为O(n^2)，不能保证较好的复杂度</li>
+<li>我们只需要前k大的数，而对其余不需要的数也进行了排序，浪费了大量排序时间</li>
+</ol>
+<p>除了这种方法之外，堆排序也是一个比较好的选择， 可以维护一个大小为k的堆，时间复杂度为O(n*logk)。</p>
+<h3 id="算法套路"><a href="#算法套路" class="headerlink" title="算法套路"></a>算法套路</h3><ol>
+<li>对整个数组进行分组，每组5个数，不满5个的凑成最后一组</li>
+<li>对每个组进行组内排序，组内5个数排序的时间复杂度为O(1)，所以总共有n/5个组，时间复杂度为O(N)</li>
+<li>拿出排序后的每个组的中位数，组成一个新的n/5长度的数组</li>
+<li>递归调用BFPRT算法，求出最后的中位数num</li>
+<li>拿到BFPRT的返回的num，利用荷兰国旗算法把小于的放在数组的左边，等于的放在数组的中间，大于放在数组的右边。</li>
+</ol>
+<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BFPRT</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">bfprt</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="comment">//1、对arr数组进行分组，每5个为一组</span></span><br><span class="line">        <span class="comment">//2、进行组内排序，时间复杂度为O(N)，取出每个组的中位数</span></span><br><span class="line">        <span class="comment">//3、每个组的中位数组成一个n/5的数组new_arr</span></span><br><span class="line">        <span class="comment">//4、递归bfprt(new_arr,new_arr.length/2)</span></span><br><span class="line">        <span class="comment">//5、得到一个中位数num</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//利用这个中位数进行荷兰国旗算法，小于在左边，等于在中间，大于在右边</span></span><br><span class="line">    <span class="comment">//如果num==k,则该中位数就是第k大的数</span></span><br><span class="line">    <span class="comment">//如果num&lt;k，则递归求num之后的数组</span></span><br><span class="line">    <span class="comment">//如果num&gt;k，则递归求num之前的数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度证明"><a href="#时间复杂度证明" class="headerlink" title="时间复杂度证明"></a>时间复杂度证明</h3><p><img src="/images/BFPRT时间复杂度.png" alt=""></p>
+<hr>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li>算法导论</li>
+<li>csdn博客</li>
+</ol>
 <blockquote>
 <p>以上讲的是荷兰国旗的解法，可以运用于经典快排算法的partition操作，也可以用于BFPRT算法求解（TOP-K问题）</p>
 </blockquote>
