@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>荷兰国旗问题&amp;快排&amp;BFPRT算法</title>
+    <url>/2019/12/26/%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98-%E5%BF%AB%E6%8E%92-BFPRT%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="荷兰国旗问题"><a href="#荷兰国旗问题" class="headerlink" title="荷兰国旗问题"></a>荷兰国旗问题</h2><blockquote>
+<p>给定一个数组arr和一个数num，请把小于num的数放在数组的左边，等于num的数放在数组的中间，大于num的数放在数组的右边。要求额外空间复杂度为O(1)，时间复杂度为O(N)</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>初始化less=-1，more=len(arr)，当前位置为cur=0。</p>
+<ul>
+<li>如果arr[cur]&lt;num，交换arr[cur]和arr[++less]的数，然后cur++</li>
+<li>如果arr[cur]&gt;num，交换arr[cur]和arr[–more]的数，然后cur不变</li>
+<li>如果当前位置上的数等于num，less和more均不变，cur++</li>
+<li>当cur==more时，停止比较，返回</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NetherLandsFlag</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">7</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">6</span>,<span class="number">6</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] res = partition(arr,<span class="number">0</span>,arr.length-<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line">        System.out.println(Arrays.toString(res));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法积累ing</category>
+      </categories>
+      <tags>
+        <tag>算法进阶</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>有趣的位运算</title>
     <url>/2019/12/20/%E6%9C%89%E8%B6%A3%E7%9A%84%E4%BD%8D%E8%BF%90%E7%AE%97/</url>
     <content><![CDATA[<h2 id="位运算概述"><a href="#位运算概述" class="headerlink" title="位运算概述"></a>位运算概述</h2><p>从现代计算机中所有的数据都以二进制的形式存储在设备中。即0、1两种状态，计算机对二进制进行的运算（+、-、*、/）都叫位运算。示例：</p>
@@ -52,7 +75,7 @@
 </table>
 <h2 id="经典运用"><a href="#经典运用" class="headerlink" title="经典运用"></a>经典运用</h2><h3 id="不用加减乘除做加法"><a href="#不用加减乘除做加法" class="headerlink" title="不用加减乘除做加法"></a>不用加减乘除做加法</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//step1:异或查看两个数进行加法操作后的结果</span></span><br><span class="line"><span class="comment">//step2:与运算计算出想对应的位置的进位结果，然后左移一位</span></span><br><span class="line"><span class="comment">//b代表的是两数相加是否有进位，有的话就继续，没有的话就结束得出相加后的答案</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(b != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = a ^ b;<span class="comment">//计算出相对应的位置相加后的结果</span></span><br><span class="line">            b = (a &amp; b) &lt;&lt; <span class="number">1</span>;<span class="comment">//计算出想对应的位置的进位，然后左移一位</span></span><br><span class="line">            a = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这个其实可以简写成return (a^b)+((a&amp;b)&lt;&lt;1);</span></span><br></pre></td></tr></table></figure>
 <h3 id="二进制中1的个数"><a href="#二进制中1的个数" class="headerlink" title="二进制中1的个数"></a>二进制中1的个数</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">NumberOf1</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(a == <span class="number">0</span>||a == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(a != <span class="number">0</span>)&#123;</span><br><span class="line">            count++;</span><br><span class="line">            a = a &amp; (a-<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="不使用第三个变量的情况下交换两个变量的值"><a href="#不使用第三个变量的情况下交换两个变量的值" class="headerlink" title="不使用第三个变量的情况下交换两个变量的值"></a>不使用第三个变量的情况下交换两个变量的值</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//原理：运用异或的特性</span></span><br><span class="line"><span class="comment">//A ^ B = C --&gt; C ^ A = B --&gt; C ^ B = A</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exchange</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    x ^= y;</span><br><span class="line">    y ^= y;</span><br><span class="line">    x ^= y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="不使用第三个变量的情况下交换两个变量的值"><a href="#不使用第三个变量的情况下交换两个变量的值" class="headerlink" title="不使用第三个变量的情况下交换两个变量的值"></a>不使用第三个变量的情况下交换两个变量的值</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//原理：运用异或的特性</span></span><br><span class="line"><span class="comment">//A ^ B = C --&gt; C ^ A = B --&gt; C ^ B = A</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exchange</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    x = x ^ y;</span><br><span class="line">    y = x ^ y;</span><br><span class="line">    x = x ^ y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="其他运用"><a href="#其他运用" class="headerlink" title="其他运用"></a>其他运用</h2><ul>
 <li>判断一个数的奇偶性</li>
 </ul>
