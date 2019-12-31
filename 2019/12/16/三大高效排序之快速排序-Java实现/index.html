@@ -861,7 +861,7 @@
           repo: 'god-jiang.github.io',
           owner: 'god-jiang',
           admin: ['god-jiang'],
-          id: location.pathname,
+          id: decodeURI(location.pathname),
           distractionFreeMode: 'true'
         })
         gitalk.render('gitalk-container')           
