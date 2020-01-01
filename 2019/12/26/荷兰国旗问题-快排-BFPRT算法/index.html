@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="荷兰国旗问题 给定一个数组arr和一个数num，请把小于num的数放在数组的左边，等于num的数放在数组的中间，大于num的数放在数组的右边。要求额外空间复杂度为O(1)，时间复杂度为O(N)">
+<meta name="description" content="荷兰国旗问题 给定一个数组arr和一个数num，请把小于num的数放在数组的左边，等于num的数放在数组的中间，大于num的数放在数组的右边。要求额外空间复杂度为O(1)，时间复杂度为O(N)  解决思路初始化less=-1，more=len(arr)，当前位置为cur=0。  如果arr[cur]&amp;lt;num，交换arr[cur]和arr[++less]的数，然后cur++ 如果arr[cur">
 <meta name="keywords" content="算法进阶">
 <meta property="og:type" content="article">
 <meta property="og:title" content="荷兰国旗问题&amp;快排&amp;BFPRT算法">
 <meta property="og:url" content="http://yoursite.com/2019/12/26/荷兰国旗问题-快排-BFPRT算法/index.html">
 <meta property="og:site_name" content="god-jiang的git个人博客">
-<meta property="og:description" content="荷兰国旗问题 给定一个数组arr和一个数num，请把小于num的数放在数组的左边，等于num的数放在数组的中间，大于num的数放在数组的右边。要求额外空间复杂度为O(1)，时间复杂度为O(N)">
+<meta property="og:description" content="荷兰国旗问题 给定一个数组arr和一个数num，请把小于num的数放在数组的左边，等于num的数放在数组的中间，大于num的数放在数组的右边。要求额外空间复杂度为O(1)，时间复杂度为O(N)  解决思路初始化less=-1，more=len(arr)，当前位置为cur=0。  如果arr[cur]&amp;lt;num，交换arr[cur]和arr[++less]的数，然后cur++ 如果arr[cur">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/荷兰国旗.png">
 <meta property="og:image" content="http://yoursite.com/images/BFPRT时间复杂度.png">
-<meta property="og:updated_time" content="2019-12-26T12:36:55.467Z">
+<meta property="og:updated_time" content="2020-01-01T04:44:16.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="荷兰国旗问题&amp;快排&amp;BFPRT算法">
-<meta name="twitter:description" content="荷兰国旗问题 给定一个数组arr和一个数num，请把小于num的数放在数组的左边，等于num的数放在数组的中间，大于num的数放在数组的右边。要求额外空间复杂度为O(1)，时间复杂度为O(N)">
+<meta name="twitter:description" content="荷兰国旗问题 给定一个数组arr和一个数num，请把小于num的数放在数组的左边，等于num的数放在数组的中间，大于num的数放在数组的右边。要求额外空间复杂度为O(1)，时间复杂度为O(N)  解决思路初始化less=-1，more=len(arr)，当前位置为cur=0。  如果arr[cur]&amp;lt;num，交换arr[cur]和arr[++less]的数，然后cur++ 如果arr[cur">
 <meta name="twitter:image" content="http://yoursite.com/images/荷兰国旗.png">
 
 
@@ -103,7 +103,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":10,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -301,7 +301,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/26/荷兰国旗问题-快排-BFPRT算法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -426,7 +426,6 @@
         <h2 id="荷兰国旗问题"><a href="#荷兰国旗问题" class="headerlink" title="荷兰国旗问题"></a>荷兰国旗问题</h2><blockquote>
 <p>给定一个数组arr和一个数num，请把小于num的数放在数组的左边，等于num的数放在数组的中间，大于num的数放在数组的右边。要求额外空间复杂度为O(1)，时间复杂度为O(N)</p>
 </blockquote>
-<a id="more"></a>
 <h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3><p>初始化less=-1，more=len(arr)，当前位置为cur=0。</p>
 <ul>
 <li>如果arr[cur]&lt;num，交换arr[cur]和arr[++less]的数，然后cur++</li>
@@ -486,7 +485,49 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div><font color="red"><b>创作不易，您的支持就是我坚持的动力，谢谢大家！</b></font></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
 
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="god-jiang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    god-jiang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/12/26/荷兰国旗问题-快排-BFPRT算法/" title="荷兰国旗问题&快排&BFPRT算法">http://yoursite.com/2019/12/26/荷兰国旗问题-快排-BFPRT算法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -587,9 +628,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="江神">
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="god-jiang">
             
-              <p class="site-author-name" itemprop="name">江神</p>
+              <p class="site-author-name" itemprop="name">god-jiang</p>
               <p class="site-description motion-element" itemprop="description">一名热爱编程和算法的在校大学生</p>
           </div>
 
@@ -685,11 +726,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">江神</span>
+  <span class="author" itemprop="copyrightHolder">god-jiang</span>
 
   
 </div>
@@ -744,6 +785,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

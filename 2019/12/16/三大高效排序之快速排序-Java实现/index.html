@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="概念快速排序是一种原地排序，只需要一个很小的栈作为辅助空间，空间复杂度为O(logN)，所以适合在数据集比较大且无序的时候使用。 时间复杂度 时间复杂度比较复杂，最好的情况是O(N)，最差的时候是O(N^2)，所以平时说的O(N*logN)为其平均时间复杂度。">
+<meta name="description" content="概念快速排序是一种原地排序，只需要一个很小的栈作为辅助空间，空间复杂度为O(logN)，所以适合在数据集比较大且无序的时候使用。 时间复杂度 时间复杂度比较复杂，最好的情况是O(N)，最差的时候是O(N^2)，所以平时说的O(N*logN)为其平均时间复杂度。 基本思想随机找出一个数，可以随机取，也可以取固定位置，一般是取第一个或最后一个称为基准，然后就是比基准小的在左边，比基准大的放到右边，如何">
 <meta name="keywords" content="高效排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="三大高效排序之快速排序(Java实现)">
 <meta property="og:url" content="http://yoursite.com/2019/12/16/三大高效排序之快速排序-Java实现/index.html">
 <meta property="og:site_name" content="god-jiang的git个人博客">
-<meta property="og:description" content="概念快速排序是一种原地排序，只需要一个很小的栈作为辅助空间，空间复杂度为O(logN)，所以适合在数据集比较大且无序的时候使用。 时间复杂度 时间复杂度比较复杂，最好的情况是O(N)，最差的时候是O(N^2)，所以平时说的O(N*logN)为其平均时间复杂度。">
+<meta property="og:description" content="概念快速排序是一种原地排序，只需要一个很小的栈作为辅助空间，空间复杂度为O(logN)，所以适合在数据集比较大且无序的时候使用。 时间复杂度 时间复杂度比较复杂，最好的情况是O(N)，最差的时候是O(N^2)，所以平时说的O(N*logN)为其平均时间复杂度。 基本思想随机找出一个数，可以随机取，也可以取固定位置，一般是取第一个或最后一个称为基准，然后就是比基准小的在左边，比基准大的放到右边，如何">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/快排运行截图.png">
-<meta property="og:updated_time" content="2019-12-26T08:59:12.828Z">
+<meta property="og:updated_time" content="2020-01-01T04:43:59.737Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三大高效排序之快速排序(Java实现)">
-<meta name="twitter:description" content="概念快速排序是一种原地排序，只需要一个很小的栈作为辅助空间，空间复杂度为O(logN)，所以适合在数据集比较大且无序的时候使用。 时间复杂度 时间复杂度比较复杂，最好的情况是O(N)，最差的时候是O(N^2)，所以平时说的O(N*logN)为其平均时间复杂度。">
+<meta name="twitter:description" content="概念快速排序是一种原地排序，只需要一个很小的栈作为辅助空间，空间复杂度为O(logN)，所以适合在数据集比较大且无序的时候使用。 时间复杂度 时间复杂度比较复杂，最好的情况是O(N)，最差的时候是O(N^2)，所以平时说的O(N*logN)为其平均时间复杂度。 基本思想随机找出一个数，可以随机取，也可以取固定位置，一般是取第一个或最后一个称为基准，然后就是比基准小的在左边，比基准大的放到右边，如何">
 <meta name="twitter:image" content="http://yoursite.com/images/快排运行截图.png">
 
 
@@ -102,7 +102,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":10,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -300,7 +300,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/三大高效排序之快速排序-Java实现/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -425,7 +425,6 @@
         <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>快速排序是一种原地排序，只需要一个很小的栈作为辅助空间，空间复杂度为O(logN)，所以适合在数据集比较大且无序的时候使用。</p>
 <p><strong>时间复杂度</strong></p>
 <p>时间复杂度比较复杂，最好的情况是O(N)，最差的时候是O(N^2)，所以平时说的O(N*logN)为其平均时间复杂度。</p>
-<a id="more"></a>
 <h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>随机找出一个数，可以随机取，也可以取固定位置，一般是取第一个或最后一个称为基准，然后就是比基准小的在左边，比基准大的放到右边，如何放做，就是和基准进行交换，这样交换完左边都是比基准小的，右边都是比较基准大的，这样就将一个数组分成了两个子数组，然后再按照同样的方法把子数组再分成更小的子数组，直到不能分解为止。</p>
 <h2 id="操作实现"><a href="#操作实现" class="headerlink" title="操作实现"></a>操作实现</h2><p>partition方法中</p>
 <p>1.选择数组中的第一个元素arr[startIndex]作为轴（pivot）</p>
@@ -461,7 +460,49 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div><font color="red"><b>创作不易，您的支持就是我坚持的动力，谢谢大家！</b></font></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
 
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="god-jiang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    god-jiang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/12/16/三大高效排序之快速排序-Java实现/" title="三大高效排序之快速排序(Java实现)">http://yoursite.com/2019/12/16/三大高效排序之快速排序-Java实现/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -562,9 +603,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="江神">
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="god-jiang">
             
-              <p class="site-author-name" itemprop="name">江神</p>
+              <p class="site-author-name" itemprop="name">god-jiang</p>
               <p class="site-description motion-element" itemprop="description">一名热爱编程和算法的在校大学生</p>
           </div>
 
@@ -660,11 +701,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">江神</span>
+  <span class="author" itemprop="copyrightHolder">god-jiang</span>
 
   
 </div>
@@ -719,6 +760,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

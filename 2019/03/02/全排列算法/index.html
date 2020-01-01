@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="全排列算法详细解析全排列在笔试面试和ACM竞赛中很热门，因为它难度适中，既可以考察递归实现，又能进一步考察非递归的实现，便于区分出考生的水平。（自己的心得：回溯是思想，深搜是本质，递归是实现）">
+<meta name="description" content="全排列算法详细解析全排列在笔试面试和ACM竞赛中很热门，因为它难度适中，既可以考察递归实现，又能进一步考察非递归的实现，便于区分出考生的水平。（自己的心得：回溯是思想，深搜是本质，递归是实现） 一、全排列的递归实现（以下所有代码以java为主）以abcd为例，共有24种排列方式，abcd,abdc,acbd,acdb…….，因此可以知道——全排列就是从第一个数字起每个数分别与它后面的数字交换。递归">
 <meta name="keywords" content="算法基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="全排列算法">
 <meta property="og:url" content="http://yoursite.com/2019/03/02/全排列算法/index.html">
 <meta property="og:site_name" content="god-jiang的git个人博客">
-<meta property="og:description" content="全排列算法详细解析全排列在笔试面试和ACM竞赛中很热门，因为它难度适中，既可以考察递归实现，又能进一步考察非递归的实现，便于区分出考生的水平。（自己的心得：回溯是思想，深搜是本质，递归是实现）">
+<meta property="og:description" content="全排列算法详细解析全排列在笔试面试和ACM竞赛中很热门，因为它难度适中，既可以考察递归实现，又能进一步考察非递归的实现，便于区分出考生的水平。（自己的心得：回溯是思想，深搜是本质，递归是实现） 一、全排列的递归实现（以下所有代码以java为主）以abcd为例，共有24种排列方式，abcd,abdc,acbd,acdb…….，因此可以知道——全排列就是从第一个数字起每个数分别与它后面的数字交换。递归">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/perm.jpg">
 <meta property="og:image" content="http://yoursite.com/images/perm01.jpg">
-<meta property="og:updated_time" content="2019-03-02T07:24:14.250Z">
+<meta property="og:updated_time" content="2020-01-01T04:44:08.372Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全排列算法">
-<meta name="twitter:description" content="全排列算法详细解析全排列在笔试面试和ACM竞赛中很热门，因为它难度适中，既可以考察递归实现，又能进一步考察非递归的实现，便于区分出考生的水平。（自己的心得：回溯是思想，深搜是本质，递归是实现）">
+<meta name="twitter:description" content="全排列算法详细解析全排列在笔试面试和ACM竞赛中很热门，因为它难度适中，既可以考察递归实现，又能进一步考察非递归的实现，便于区分出考生的水平。（自己的心得：回溯是思想，深搜是本质，递归是实现） 一、全排列的递归实现（以下所有代码以java为主）以abcd为例，共有24种排列方式，abcd,abdc,acbd,acdb…….，因此可以知道——全排列就是从第一个数字起每个数分别与它后面的数字交换。递归">
 <meta name="twitter:image" content="http://yoursite.com/images/perm.jpg">
 
 
@@ -103,7 +103,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":10,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -301,7 +301,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/全排列算法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -424,7 +424,6 @@
 
       
         <h2 id="全排列算法详细解析"><a href="#全排列算法详细解析" class="headerlink" title="全排列算法详细解析"></a>全排列算法详细解析</h2><p>全排列在笔试面试和ACM竞赛中很热门，因为它难度适中，既可以考察递归实现，又能进一步考察非递归的实现，便于区分出考生的水平。（<strong>自己的心得：回溯是思想，深搜是本质，递归是实现</strong>）</p>
-<a id="more"></a>
 <h4 id="一、全排列的递归实现（以下所有代码以java为主）"><a href="#一、全排列的递归实现（以下所有代码以java为主）" class="headerlink" title="一、全排列的递归实现（以下所有代码以java为主）"></a>一、全排列的递归实现（以下所有代码以java为主）</h4><p>以abcd为例，共有24种排列方式，abcd,abdc,acbd,acdb…….，因此可以知道——<em>全排列就是从第一个数字起每个数分别与它后面的数字交换。</em>递归的代码如下：</p>
 <pre><code>public class Main{
     public static int count=0;
@@ -516,7 +515,49 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div><font color="red"><b>创作不易，您的支持就是我坚持的动力，谢谢大家！</b></font></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
 
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="god-jiang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    god-jiang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/03/02/全排列算法/" title="全排列算法">http://yoursite.com/2019/03/02/全排列算法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -617,9 +658,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="江神">
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="god-jiang">
             
-              <p class="site-author-name" itemprop="name">江神</p>
+              <p class="site-author-name" itemprop="name">god-jiang</p>
               <p class="site-description motion-element" itemprop="description">一名热爱编程和算法的在校大学生</p>
           </div>
 
@@ -715,11 +756,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">江神</span>
+  <span class="author" itemprop="copyrightHolder">god-jiang</span>
 
   
 </div>
@@ -774,6 +815,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="归并排序的介绍归并排序(英语：Merge sort，或Mergesort)，是创建在归并操作上的一种有效的排序算法，效率为O(n log n)。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。">
+<meta name="description" content="归并排序的介绍归并排序(英语：Merge sort，或Mergesort)，是创建在归并操作上的一种有效的排序算法，效率为O(n log n)。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。 概念是利用递归与分治的技术将数据序列划分为越来越小的半子表，再对半子表排序，最后再用递归方法将排好序的半子表">
 <meta name="keywords" content="高效排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="三大高效排序之归并排序(Java实现)">
 <meta property="og:url" content="http://yoursite.com/2019/12/16/三大高效排序之归并排序-Java实现/index.html">
 <meta property="og:site_name" content="god-jiang的git个人博客">
-<meta property="og:description" content="归并排序的介绍归并排序(英语：Merge sort，或Mergesort)，是创建在归并操作上的一种有效的排序算法，效率为O(n log n)。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。">
+<meta property="og:description" content="归并排序的介绍归并排序(英语：Merge sort，或Mergesort)，是创建在归并操作上的一种有效的排序算法，效率为O(n log n)。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。 概念是利用递归与分治的技术将数据序列划分为越来越小的半子表，再对半子表排序，最后再用递归方法将排好序的半子表">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/归并排序图示.png">
 <meta property="og:image" content="http://yoursite.com/images/归并运行截图.png">
-<meta property="og:updated_time" content="2019-12-26T08:59:05.062Z">
+<meta property="og:updated_time" content="2020-01-01T04:44:02.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三大高效排序之归并排序(Java实现)">
-<meta name="twitter:description" content="归并排序的介绍归并排序(英语：Merge sort，或Mergesort)，是创建在归并操作上的一种有效的排序算法，效率为O(n log n)。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。">
+<meta name="twitter:description" content="归并排序的介绍归并排序(英语：Merge sort，或Mergesort)，是创建在归并操作上的一种有效的排序算法，效率为O(n log n)。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。 概念是利用递归与分治的技术将数据序列划分为越来越小的半子表，再对半子表排序，最后再用递归方法将排好序的半子表">
 <meta name="twitter:image" content="http://yoursite.com/images/归并排序图示.png">
 
 
@@ -103,7 +103,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":10,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -301,7 +301,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/三大高效排序之归并排序-Java实现/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -424,7 +424,6 @@
 
       
         <h2 id="归并排序的介绍"><a href="#归并排序的介绍" class="headerlink" title="归并排序的介绍"></a>归并排序的介绍</h2><p>归并排序(英语：Merge sort，或Mergesort)，是创建在归并操作上的一种有效的排序算法，效率为O(n log n)。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。</p>
-<a id="more"></a>
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>是利用递归与分治的技术将数据序列划分为越来越小的半子表，再对半子表排序，最后再用递归方法将排好序的半子表合并成越来越大的有序序列。</p>
 <h2 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h2><p><strong>将两个有序的数列合并成一个大的有序的序列。通过递归，层层合并，即为归并。</strong></p>
 <p><img src="/images/归并排序图示.png" alt=""></p>
@@ -453,7 +452,49 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div><font color="red"><b>创作不易，您的支持就是我坚持的动力，谢谢大家！</b></font></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
 
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="god-jiang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    god-jiang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/12/16/三大高效排序之归并排序-Java实现/" title="三大高效排序之归并排序(Java实现)">http://yoursite.com/2019/12/16/三大高效排序之归并排序-Java实现/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -554,9 +595,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="江神">
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="god-jiang">
             
-              <p class="site-author-name" itemprop="name">江神</p>
+              <p class="site-author-name" itemprop="name">god-jiang</p>
               <p class="site-description motion-element" itemprop="description">一名热爱编程和算法的在校大学生</p>
           </div>
 
@@ -652,11 +693,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">江神</span>
+  <span class="author" itemprop="copyrightHolder">god-jiang</span>
 
   
 </div>
@@ -711,6 +752,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

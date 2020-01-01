@@ -98,7 +98,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":10,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -297,7 +297,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/31/hexo博客搭建gittalk/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -417,9 +417,10 @@
 
       
         
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><blockquote>
-<p>2019年1月份的时候就开始搭建了我的第一个博客hexo，部署到了Github Page上，也陆陆续续更新了一些大学时期学习的数据结构和算法内容，然后加了阅读量和访问量，后面发现没有评论系统的博客有点low的感觉，看了很多的评论系统，这里就不一一列举了，最后使用的是Gittalk评论系统。接下来就来介绍hexo集成Gittalk评论系统的全部过程。</p>
-</blockquote>
+          
+          背景
+2019年1月份的时候就开始搭建了我的第一个博客hexo，部署到了Github Page上，也陆陆续续更新了一些大学时期学习的数据结构和算法内容，然后加了阅读量和访问量，后面发现没有评论系统的博客有点low的感觉，看了很多的评论系统，
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/12/31/hexo博客搭建gittalk/#more" rel="contents">
@@ -478,7 +479,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/26/荷兰国旗问题-快排-BFPRT算法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -598,9 +599,12 @@
 
       
         
-          <h2 id="荷兰国旗问题"><a href="#荷兰国旗问题" class="headerlink" title="荷兰国旗问题"></a>荷兰国旗问题</h2><blockquote>
-<p>给定一个数组arr和一个数num，请把小于num的数放在数组的左边，等于num的数放在数组的中间，大于num的数放在数组的右边。要求额外空间复杂度为O(1)，时间复杂度为O(N)</p>
-</blockquote>
+          
+          荷兰国旗问题
+给定一个数组arr和一个数num，请把小于num的数放在数组的左边，等于num的数放在数组的中间，大于num的数放在数组的右边。要求额外空间复杂度为O(1)，时间复杂度为O(N)
+
+解决思路初始化less=-1，more=le
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/12/26/荷兰国旗问题-快排-BFPRT算法/#more" rel="contents">
@@ -659,7 +663,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/20/有趣的位运算/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -779,7 +783,11 @@
 
       
         
-          <h2 id="位运算概述"><a href="#位运算概述" class="headerlink" title="位运算概述"></a>位运算概述</h2><p>从现代计算机中所有的数据都以二进制的形式存储在设备中。即0、1两种状态，计算机对二进制进行的运算（+、-、*、/）都叫位运算。示例：</p>
+          
+          位运算概述从现代计算机中所有的数据都以二进制的形式存储在设备中。即0、1两种状态，计算机对二进制进行的运算（+、-、*、/）都叫位运算。示例：
+123int a = 35;int b = 47;int c = a + b;
+计算a+b的值，
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/12/20/有趣的位运算/#more" rel="contents">
@@ -838,7 +846,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/17/三大高效排序之堆排序-Java实现/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -958,9 +966,13 @@
 
       
         
-          <h2 id="堆排序的介绍"><a href="#堆排序的介绍" class="headerlink" title="堆排序的介绍"></a>堆排序的介绍</h2><blockquote>
-<p>堆排序(Heapsort)是指利用堆积树（堆）这种数据结构所设计的一种排序算法，它是选择排序的一种。可以利用数组的特点快速定位指定索引的元素。堆分为大根堆和小根堆，是<strong>完全二叉树</strong>。</p>
-</blockquote>
+          
+          堆排序的介绍
+堆排序(Heapsort)是指利用堆积树（堆）这种数据结构所设计的一种排序算法，它是选择排序的一种。可以利用数组的特点快速定位指定索引的元素。堆分为大根堆和小根堆，是完全二叉树。
+
+
+完全二叉树：除了最后一层之外的其他每一层都
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/12/17/三大高效排序之堆排序-Java实现/#more" rel="contents">
@@ -1019,7 +1031,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/三大高效排序之归并排序-Java实现/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -1139,7 +1151,9 @@
 
       
         
-          <h2 id="归并排序的介绍"><a href="#归并排序的介绍" class="headerlink" title="归并排序的介绍"></a>归并排序的介绍</h2><p>归并排序(英语：Merge sort，或Mergesort)，是创建在归并操作上的一种有效的排序算法，效率为O(n log n)。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。</p>
+          
+          归并排序的介绍归并排序(英语：Merge sort，或Mergesort)，是创建在归并操作上的一种有效的排序算法，效率为O(n log n)。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/12/16/三大高效排序之归并排序-Java实现/#more" rel="contents">
@@ -1198,7 +1212,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/三大高效排序之快速排序-Java实现/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -1318,9 +1332,11 @@
 
       
         
-          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>快速排序是一种原地排序，只需要一个很小的栈作为辅助空间，空间复杂度为O(logN)，所以适合在数据集比较大且无序的时候使用。</p>
-<p><strong>时间复杂度</strong></p>
-<p>时间复杂度比较复杂，最好的情况是O(N)，最差的时候是O(N^2)，所以平时说的O(N*logN)为其平均时间复杂度。</p>
+          
+          概念快速排序是一种原地排序，只需要一个很小的栈作为辅助空间，空间复杂度为O(logN)，所以适合在数据集比较大且无序的时候使用。
+时间复杂度
+时间复杂度比较复杂，最好的情况是O(N)，最差的时候是O(N^2)，所以平时说的O(N*logN)
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/12/16/三大高效排序之快速排序-Java实现/#more" rel="contents">
@@ -1379,7 +1395,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/15/神级遍历-morris/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -1499,8 +1515,10 @@
 
       
         
-          <h2 id="morris遍历介绍"><a href="#morris遍历介绍" class="headerlink" title="morris遍历介绍"></a>morris遍历介绍</h2><p>morris遍历是二叉树遍历算法的超强进阶算法，跟递归、非递归（栈实现）的空间复杂度，morris遍历可以将非递归遍历中的空间复杂度降为O(1)。从而实现时间复杂度为O(N)，而空间复杂度为O(1)的精妙算法。</p>
-<p>morris遍历利用的是树的叶节点左右孩子为空（树的大量空闲指针），实现空间开销的极限缩减。</p>
+          
+          morris遍历介绍morris遍历是二叉树遍历算法的超强进阶算法，跟递归、非递归（栈实现）的空间复杂度，morris遍历可以将非递归遍历中的空间复杂度降为O(1)。从而实现时间复杂度为O(N)，而空间复杂度为O(1)的精妙算法。
+morr
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/12/15/神级遍历-morris/#more" rel="contents">
@@ -1559,7 +1577,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/20/链表反转解法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -1679,9 +1697,10 @@
 
       
         
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><blockquote>
-<p>当初大二学习数据结构的时候，有许多数据结构我都学得有点懵，总感觉没有一个系统的概括和总结，导致我的链表学得一般。后来班上有个同学微信跟我说叫我关注”程序员小灰”这个公众号，说他讲得很生动形象，最后关注了一波，看了他里面一道经典的面试题——链表反转。接下来就来讲解链表反转的解法。</p>
-</blockquote>
+          
+          背景
+当初大二学习数据结构的时候，有许多数据结构我都学得有点懵，总感觉没有一个系统的概括和总结，导致我的链表学得一般。后来班上有个同学微信跟我说叫我关注”程序员小灰”这个公众号，说他讲得很生动形象，最后关注了一波，看了他里面一道经典的面试题
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/04/20/链表反转解法/#more" rel="contents">
@@ -1740,7 +1759,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/全排列算法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -1860,7 +1879,10 @@
 
       
         
-          <h2 id="全排列算法详细解析"><a href="#全排列算法详细解析" class="headerlink" title="全排列算法详细解析"></a>全排列算法详细解析</h2><p>全排列在笔试面试和ACM竞赛中很热门，因为它难度适中，既可以考察递归实现，又能进一步考察非递归的实现，便于区分出考生的水平。（<strong>自己的心得：回溯是思想，深搜是本质，递归是实现</strong>）</p>
+          
+          全排列算法详细解析全排列在笔试面试和ACM竞赛中很热门，因为它难度适中，既可以考察递归实现，又能进一步考察非递归的实现，便于区分出考生的水平。（自己的心得：回溯是思想，深搜是本质，递归是实现）
+一、全排列的递归实现（以下所有代码以java为
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/03/02/全排列算法/#more" rel="contents">
@@ -1919,7 +1941,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/MyBatis开发流程/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江神">
+      <meta itemprop="name" content="god-jiang">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/header.jpg">
     </span>
@@ -2121,9 +2143,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="江神">
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="god-jiang">
             
-              <p class="site-author-name" itemprop="name">江神</p>
+              <p class="site-author-name" itemprop="name">god-jiang</p>
               <p class="site-description motion-element" itemprop="description">一名热爱编程和算法的在校大学生</p>
           </div>
 
@@ -2203,11 +2225,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">江神</span>
+  <span class="author" itemprop="copyrightHolder">god-jiang</span>
 
   
 </div>
@@ -2262,6 +2284,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
